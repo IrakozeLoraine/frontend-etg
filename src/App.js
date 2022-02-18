@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
+import Nav from './components/Nav';
+import BuyToken from './components/BuyToken';
+import CheckDays from './components/CheckDays';
+import TokenInfo from './components/TokenInfo';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      <div className="auth-wrapper">
+        <div className="auth-inner">
+          <Routes>
+            <Route exact path="/info/:id" element={<TokenInfo />} />
+            <Route exact path="/check" element={<CheckDays />} />
+            <Route exact path="/buy" element={<BuyToken />} />
+            <Route path="/" element={<CheckDays />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
